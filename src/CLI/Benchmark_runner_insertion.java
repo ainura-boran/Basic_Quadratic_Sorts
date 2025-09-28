@@ -1,4 +1,7 @@
-package insertion_sort_project;
+package CLI;
+import Algorithm.Insertion_sort;
+import Metrics.PerformanceTrackerInsertion;
+
 import java.io.*;
 import java.util.*;
 
@@ -14,13 +17,13 @@ public class Benchmark_runner_insertion {
         String out = getStrArg(args, "--out", "benchmarks_insertion.csv");
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(out))) {
-            pw.println(Performance_Tracker.csvHeader());
+            pw.println(PerformanceTrackerInsertion.csvHeader());
 
             for (int n = minN; n <= maxN; n = Math.max(n * factor, n + 1)) {
                 for (String dist : List.of("random", "sorted", "reverse", "nearly_sorted", "few_unique")) {
                     for (int t = 1; t <= trials; t++) {
                         int[] arr = genArray(n, dist);
-                        Performance_Tracker tracker = new Performance_Tracker();
+                        PerformanceTrackerInsertion tracker = new PerformanceTrackerInsertion();
                         Insertion_sort.Options opts = Insertion_sort.Options.tunedForNearlySorted();
 
                         Insertion_sort.sort(arr, tracker, opts);

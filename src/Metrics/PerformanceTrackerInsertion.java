@@ -1,8 +1,7 @@
-package insertion_sort_project;
-import java.util.concurrent.TimeUnit;
+package Metrics;
 
 
-public class Performance_Tracker {
+public class PerformanceTrackerInsertion {
     public long comparisons;
     public long swaps;
     public long shifts;

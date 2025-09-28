@@ -1,4 +1,6 @@
-package insertion_sort_project;
+package Test;
+import Algorithm.Insertion_sort;
+import Metrics.PerformanceTrackerInsertion;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Random;
@@ -9,7 +11,7 @@ public class Insertion_sort_testing {
     @Test
     void emptyArray_ok() {
         int[] a = {};
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion ();
         Insertion_sort.sort(a, t, new Insertion_sort.Options());
         assertTrue(Insertion_sort.isSorted(a));
     }
@@ -17,7 +19,7 @@ public class Insertion_sort_testing {
     @Test
     void singleElement_ok() {
         int[] a = {7};
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion();
         Insertion_sort.sort(a, t, new Insertion_sort.Options());
         assertArrayEquals(new int[]{7}, a);
     }
@@ -25,7 +27,7 @@ public class Insertion_sort_testing {
     @Test
     void duplicates_ok() {
         int[] a = {3, 1, 1, 2, 2, 2, 0, 0};
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion();
         Insertion_sort.sort(a, t, new Insertion_sort.Options());
         assertTrue(Insertion_sort.isSorted(a));
     }
@@ -33,7 +35,7 @@ public class Insertion_sort_testing {
     @Test
     void sorted_ok() {
         int[] a = {1,2,3,4,5,6};
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion();
         Insertion_sort.sort(a, t, Insertion_sort.Options.tunedForNearlySorted());
         assertTrue(Insertion_sort.isSorted(a));
     }
@@ -41,7 +43,7 @@ public class Insertion_sort_testing {
     @Test
     void reverse_ok() {
         int[] a = {6,5,4,3,2,1};
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion();
         Insertion_sort.sort(a, t, new Insertion_sort.Options());
         assertTrue(Insertion_sort.isSorted(a));
     }
@@ -56,7 +58,7 @@ public class Insertion_sort_testing {
                 int[] expected = a.clone();
                 Arrays.sort(expected);
 
-                var t = new Performance_Tracker();
+                var t = new PerformanceTrackerInsertion();
                 Insertion_sort.sort(a, t, Insertion_sort.Options.tunedForNearlySorted());
                 assertArrayEquals(expected, a);
             }
@@ -71,13 +73,13 @@ public class Insertion_sort_testing {
         int[] expected = a.clone();
         Arrays.sort(expected);
 
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion();
         Insertion_sort.sort(a, t, Insertion_sort.Options.tunedForNearlySorted());
         assertArrayEquals(expected, a);
     }
     public static void main(String[] args) {
         int[] a = {5,2,4,6,1,3};
-        var t = new Performance_Tracker();
+        var t = new PerformanceTrackerInsertion();
         Insertion_sort.sort(a, t, Insertion_sort.Options.tunedForNearlySorted());
         System.out.println("Sorted: " + Arrays.toString(a));
         System.out.printf("metrics: cmp=%d shifts=%d reads=%d writes=%d ms=%.3f%n",

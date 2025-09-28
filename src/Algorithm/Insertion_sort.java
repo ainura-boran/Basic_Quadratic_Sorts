@@ -1,5 +1,6 @@
-package insertion_sort_project;
-import java.util.Arrays;
+package Algorithm;
+
+import Metrics.PerformanceTrackerInsertion;
 
 public final class Insertion_sort {
 
@@ -19,7 +20,7 @@ public final class Insertion_sort {
         }
     }
 
-    public static void sort(int[] a, Performance_Tracker t, Options opts) {
+    public static void sort(int[] a, PerformanceTrackerInsertion t, Options opts) {
         if (a == null)
             throw new IllegalArgumentException("array is null");
         if (t == null)
@@ -43,7 +44,7 @@ public final class Insertion_sort {
         t.stop();
     }
 
-    private static boolean isAlreadySorted(int[] a, Performance_Tracker t) {
+    private static boolean isAlreadySorted(int[] a, PerformanceTrackerInsertion t) {
         for (int i = 1; i < a.length; i++) {
             t.arrayReads += 2;
             t.comparisons++;
@@ -52,7 +53,7 @@ public final class Insertion_sort {
         return true;
     }
 
-    private static void placeSentinelMin(int[] a, Performance_Tracker t) {
+    private static void placeSentinelMin(int[] a, PerformanceTrackerInsertion t) {
         int minIdx = 0;
         int minVal = read(a, 0, t);
         for (int i = 1; i < a.length; i++) {
@@ -65,7 +66,7 @@ public final class Insertion_sort {
         }
     }
 
-    private static void plainInsertionSort(int[] a, Performance_Tracker t) {
+    private static void plainInsertionSort(int[] a, PerformanceTrackerInsertion t) {
         for (int i = 1; i < a.length; i++) {
             int key = read(a, i, t);
             int j = i - 1;
@@ -82,7 +83,7 @@ public final class Insertion_sort {
         }
     }
 
-    private static void binaryInsertionSort(int[] a, Performance_Tracker t) {
+    private static void binaryInsertionSort(int[] a, PerformanceTrackerInsertion t) {
         for (int i = 1; i < a.length; i++) {
             int key = read(a, i, t);
 
@@ -106,15 +107,15 @@ public final class Insertion_sort {
         }
     }
 
-    private static int read(int[] a, int i, Performance_Tracker t) {
+    private static int read(int[] a, int i, PerformanceTrackerInsertion t) {
         t.arrayReads++;
         return a[i];
     }
-    private static void write(int[] a, int i, int v, Performance_Tracker t) {
+    private static void write(int[] a, int i, int v, PerformanceTrackerInsertion t) {
         t.arrayWrites++;
         a[i] = v;
     }
-    private static void swap(int[] a, int i, int j, Performance_Tracker t) {
+    private static void swap(int[] a, int i, int j, PerformanceTrackerInsertion t) {
         int tmp = read(a, i, t);
         write(a, i, a[j], t); t.arrayReads++;
         write(a, j, tmp, t);

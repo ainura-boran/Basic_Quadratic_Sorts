@@ -1,6 +1,6 @@
 package Metrics;
 
-public class PerformanceTracker {
+public class PerformanceTrackerSelection {
     private long comparisons, swaps, arrayAccesses;
     private long startNs, elapsedNs;
 

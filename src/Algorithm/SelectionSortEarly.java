@@ -1,10 +1,10 @@
 package Algorithm;
 
-import Metrics.PerformanceTracker;
+import Metrics.PerformanceTrackerSelection;
 
 public class SelectionSortEarly {
 
-    public static void sort(int[] arr, PerformanceTracker tracker) {
+    public static void sort(int[] arr, PerformanceTrackerSelection tracker) {
         int n = arr.length;
         tracker.reset();
 

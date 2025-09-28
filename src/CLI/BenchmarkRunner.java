@@ -1,7 +1,7 @@
 package CLI;
 
 import Algorithm.SelectionSortEarly;
-import Metrics.PerformanceTracker;
+import Metrics.PerformanceTrackerSelection;
 import java.util.*;
 
 public class BenchmarkRunner {
@@ -9,7 +9,7 @@ public class BenchmarkRunner {
         int[] sizes = {100, 1000, 10000, 100000};
         String[] dists = {"random", "sorted", "reversed"};
 
-        PerformanceTracker tracker = new PerformanceTracker();
+        PerformanceTrackerSelection tracker = new PerformanceTrackerSelection();
 
         for (int n : sizes) {
             System.out.println("[SelectionSort] n=" + n);
